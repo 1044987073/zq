@@ -4,7 +4,7 @@
 
 详细 UI 规范见 [docs/UI-DESIGN.md](docs/UI-DESIGN.md)。
 
-**高保真 UI 预览（浏览器，可改色）**：[在线打开 design-preview](https://htmlpreview.github.io/?https://raw.githubusercontent.com/1044987073/zq/cursor/diy-miniprogram-ui-f2de/diy-stall-miniprogram/design-preview/index.html) · 或本地打开 `design-preview/index.html`（见 [design-preview/README.md](design-preview/README.md)）。
+**UI 设计稿（蓝湖/Figma 式网页）**：本地打开 [`design-preview/index.html`](design-preview/index.html)（左画板 + 画布缩放 + 右标注）。说明与 Pages 部署见 [design-preview/README.md](design-preview/README.md)。原生 Figma/蓝湖需在你账号中建稿或从本页截图导入。
 
 ## 快速开始
 
