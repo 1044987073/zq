@@ -4,6 +4,8 @@
 
 详细 UI 规范见 [docs/UI-DESIGN.md](docs/UI-DESIGN.md)。
 
+**高保真 UI 预览（浏览器，可改色）**：[在线打开 design-preview](https://htmlpreview.github.io/?https://raw.githubusercontent.com/1044987073/zq/cursor/diy-miniprogram-ui-f2de/diy-stall-miniprogram/design-preview/index.html) · 或本地打开 `design-preview/index.html`（见 [design-preview/README.md](design-preview/README.md)）。
+
 ## 快速开始
 
 ```bash

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>公园 DIY 小程序 — UI 设计预览</title>
+  <style>
+    :root {
+      --color-primary: #2d6a4f;
+      --color-primary-light: #52b788;
+      --color-secondary: #d8f3dc;
+      --color-accent: #f4a261;
+      --color-bg: #f7f9f8;
+      --color-surface: #ffffff;
+      --color-text: #1b4332;
+      --color-text-muted: #52796f;
+      --radius: 16px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif;
+      background: #e8ecea;
+      color: var(--color-text);
+      line-height: 1.5;
+    }
+    .page-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px 16px 48px;
+    }
+    h1 { font-size: 1.35rem; margin: 0 0 8px; }
+    .lead { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 20px; }
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 20px;
+      align-items: center;
+      background: var(--color-surface);
+      padding: 16px;
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+    }
+    .toolbar label { font-size: 0.8rem; color: var(--color-text-muted); display: flex; align-items: center; gap: 8px; }
+    .toolbar input[type="color"] { width: 36px; height: 28px; border: none; padding: 0; cursor: pointer; }
+    .tabs { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+    .tabs button {
+      border: 1px solid var(--color-secondary);
+      background: var(--color-surface);
+      color: var(--color-text);
+      padding: 8px 16px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 0.85rem;
+    }
+    .tabs button.active {
+      background: var(--color-primary);
+      color: #fff;
+      border-color: var(--color-primary);
+    }
+    .phones {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      justify-content: center;
+    }
+    .phone {
+      width: 320px;
+      background: #111;
+      border-radius: 36px;
+      padding: 12px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+    }
+    .phone__screen {
+      background: var(--color-bg);
+      border-radius: 28px;
+      overflow: hidden;
+      min-height: 580px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .status-bar {
+      height: 28px;
+      background: var(--color-primary);
+    }
+    .nav {
+      background: var(--color-primary);
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+    .content { flex: 1; padding: 14px; overflow-y: auto; padding-bottom: 72px; }
+    .hero {
+      background: var(--color-primary);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 18px;
+      margin-bottom: 14px;
+    }
+    .hero h2 { margin: 0 0 6px; font-size: 1.15rem; }
+    .hero p { margin: 0; font-size: 0.8rem; opacity: 0.92; }
+    .hero .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #95d5b2; margin-right: 6px; }
+    .section { font-weight: 600; margin: 14px 0 8px; font-size: 0.95rem; }
+    .card {
+      background: var(--color-surface);
+      border-radius: var(--radius);
+      padding: 12px;
+      margin-bottom: 10px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .thumb {
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      background: var(--color-secondary);
+      flex-shrink: 0;
+    }
+    .thumb.orange { background: #f4a261; }
+    .thumb.yellow { background: #e9c46a; }
+    .thumb.teal { background: #4d908e; }
+    .card h3 { margin: 0 0 4px; font-size: 0.9rem; }
+    .muted { color: var(--color-text-muted); font-size: 0.75rem; }
+    .price { color: var(--color-accent); font-weight: 600; font-size: 0.85rem; margin-top: 4px; }
+    .pill {
+      display: inline-block;
+      font-size: 0.65rem;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: var(--color-secondary);
+      color: var(--color-primary);
+      margin-left: 6px;
+    }
+    .tabbar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      background: var(--color-surface);
+      border-top: 1px solid var(--color-secondary);
+      padding: 8px 0 10px;
+    }
+    .tabbar span {
+      flex: 1;
+      text-align: center;
+      font-size: 0.65rem;
+      color: var(--color-text-muted);
+    }
+    .tabbar span.on { color: var(--color-primary); font-weight: 600; }
+    .cover {
+      width: 100%;
+      height: 140px;
+      border-radius: var(--radius);
+      background: var(--color-secondary);
+      margin-bottom: 12px;
+    }
+    .step {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-size: 0.8rem;
+    }
+    .step i {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--color-secondary);
+      color: var(--color-primary);
+      font-size: 0.7rem;
+      font-style: normal;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .field {
+      background: var(--color-surface);
+      border-radius: 10px;
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      font-size: 0.8rem;
+      border: 1px solid var(--color-secondary);
+    }
+    .field label { display: block; color: var(--color-text-muted); font-size: 0.7rem; margin-bottom: 4px; }
+    .btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background: var(--color-primary);
+      color: #fff;
+      border: none;
+      padding: 12px;
+      border-radius: 999px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+    }
+    .screen { display: none; }
+    .screen.active { display: block; }
+    .note {
+      margin-top: 20px;
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrap">
+    <h1>公园 DIY 小程序 — 高保真 UI 预览</h1>
+    <p class="lead">在浏览器中查看与小程序一致的布局与配色；下方色块可实时改主题（与小程序「主题配色」同一套变量名）。真机效果请以微信开发者工具为准。</p>
+
+    <div class="toolbar" id="colorToolbar">
+      <label>主色 <input type="color" data-var="--color-primary" value="#2d6a4f" /></label>
+      <label>主色浅 <input type="color" data-var="--color-primary-light" value="#52b788" /></label>
+      <label>辅色底 <input type="color" data-var="--color-secondary" value="#d8f3dc" /></label>
+      <label>强调色 <input type="color" data-var="--color-accent" value="#f4a261" /></label>
+      <label>背景 <input type="color" data-var="--color-bg" value="#f7f9f8" /></label>
+      <label>正文 <input type="color" data-var="--color-text" value="#1b4332" /></label>
+    </div>
+
+    <div class="tabs">
+      <button type="button" class="active" data-screen="home">用户 · 首页</button>
+      <button type="button" data-screen="detail">用户 · 商品详情</button>
+      <button type="button" data-screen="admin">管理 · 商品</button>
+    </div>
+
+    <div class="phones">
+      <div class="phone">
+        <div class="phone__screen">
+          <div class="status-bar"></div>
+          <div class="nav" id="navTitle">首页</div>
+          <div class="content">
+            <div id="screen-home" class="screen active">
+              <div class="hero">
+                <h2>公园手工 DIY 小摊</h2>
+                <p>砸石膏 · 涂面具 · 把创意带回家</p>
+                <p style="margin-top:10px;font-size:0.75rem"><span class="dot"></span>今日营业中 · 16:00 – 20:00</p>
+              </div>
+              <div class="section">主推体验</div>
+              <div class="card">
+                <div class="thumb orange"></div>
+                <div>
+                  <h3>南瓜石膏娃娃（小）<span class="pill">招牌</span></h3>
+                  <div class="muted">约 20 分钟 · 5 岁+</div>
+                  <div class="price">10–12 元/个</div>
+                </div>
+              </div>
+              <div class="section">全部项目</div>
+              <div class="card">
+                <div class="thumb yellow"></div>
+                <div>
+                  <h3>DIY 面具绘画</h3>
+                  <div class="muted">约 15 分钟 · 4–10 岁</div>
+                  <div class="price">15 元/个</div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="thumb teal"></div>
+                <div>
+                  <h3>许愿瓶 55ml</h3>
+                  <div class="muted">剩余 10</div>
+                  <div class="price">15–20 元/个</div>
+                </div>
+              </div>
+            </div>
+            <div id="screen-detail" class="screen">
+              <div class="cover"></div>
+              <h2 style="margin:0 0 6px;font-size:1.1rem">南瓜石膏娃娃（小）</h2>
+              <div class="price">10–12 元/个</div>
+              <div class="muted">约 20 分钟 · 适合 5 岁+</div>
+              <div class="section">玩法步骤</div>
+              <div class="card" style="flex-direction:column;align-items:stretch">
+                <div class="step"><i>1</i>小锤敲开石膏壳</div>
+                <div class="step"><i>2</i>取出南瓜娃娃</div>
+                <div class="step"><i>3</i>涂色装饰带走</div>
+              </div>
+              <div class="section">说明</div>
+              <div class="card"><div class="muted">「砸」的过程很解压，围观引流效果好。</div></div>
+            </div>
+            <div id="screen-admin" class="screen">
+              <div class="section">商品列表</div>
+              <div class="card">
+                <div class="thumb orange"></div>
+                <div style="flex:1">
+                  <div class="field"><label>名称</label>南瓜石膏娃娃（小）</div>
+                  <div class="field"><label>售价 / 库存</label>10 · 库存 15</div>
+                </div>
+              </div>
+              <div class="field"><label>玩法说明</label>砸石膏后现场涂色带走</div>
+              <div class="field"><label>步骤（每行一步）</label>敲开石膏 → 取出娃娃 → 涂色</div>
+              <button type="button" class="btn">保存（示意）</button>
+            </div>
+          </div>
+          <div class="tabbar" id="tabbar">
+            <span class="on">首页</span>
+            <span>项目</span>
+            <span>套餐</span>
+            <span>关于</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="note">本地打开：用浏览器直接打开本文件 <code>design-preview/index.html</code>。在线预览见仓库 README 中的 HtmlPreview 链接。</p>
+  </div>
+  <script>
+    const titles = { home: '首页', detail: '项目详情', admin: '商品管理' };
+    document.querySelectorAll('.tabs button').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tabs button').forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+        const id = btn.dataset.screen;
+        document.querySelectorAll('.screen').forEach((s) => s.classList.remove('active'));
+        document.getElementById('screen-' + id).classList.add('active');
+        document.getElementById('navTitle').textContent = titles[id];
+        document.getElementById('tabbar').style.display = id === 'admin' ? 'none' : 'flex';
+      });
+    });
+    document.querySelectorAll('#colorToolbar input').forEach((input) => {
+      input.addEventListener('input', () => {
+        document.documentElement.style.setProperty(input.dataset.var, input.value);
+        if (input.dataset.var === '--color-primary') {
+          document.querySelectorAll('.status-bar, .nav, .hero').forEach((el) => {
+            el.style.background = input.value;
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
