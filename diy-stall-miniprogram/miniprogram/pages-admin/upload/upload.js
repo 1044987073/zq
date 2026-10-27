@@ -3,15 +3,46 @@ const store = require('../../utils/store');
 const { loadTheme, themeToPageStyle } = require('../../utils/theme');
 
 Page({
-  data: { pageStyle: '', fileList: [] },
+  data: { pageStyle: '', fileList: [], wechatList: [], alipayList: [] },
 
   onShow() {
     if (!auth.requireAdmin(this)) return;
     const banners = store.getBanners();
+    const settings = store.getSettings();
     this.setData({
       pageStyle: themeToPageStyle(loadTheme()),
-      fileList: banners.map((b, i) => ({ url: b.url, name: `banner-${i}`, isImage: true }))
+      fileList: banners.map((b, i) => ({ url: b.url, name: `banner-${i}`, isImage: true })),
+      wechatList: settings.wechatPayQr
+        ? [{ url: settings.wechatPayQr, name: 'wechat', isImage: true }]
+        : [],
+      alipayList: settings.alipayPayQr
+        ? [{ url: settings.alipayPayQr, name: 'alipay', isImage: true }]
+        : []
     });
+  },
+
+  onWechatQr(e) {
+    const file = e.detail.file;
+    const path = (Array.isArray(file) ? file[0] : file).url || (Array.isArray(file) ? file[0] : file).tempFilePath;
+    store.saveSettings({ wechatPayQr: path });
+    this.onShow();
+  },
+
+  clearWechat() {
+    store.saveSettings({ wechatPayQr: '' });
+    this.onShow();
+  },
+
+  onAlipayQr(e) {
+    const file = e.detail.file;
+    const path = (Array.isArray(file) ? file[0] : file).url || (Array.isArray(file) ? file[0] : file).tempFilePath;
+    store.saveSettings({ alipayPayQr: path });
+    this.onShow();
+  },
+
+  clearAlipay() {
+    store.saveSettings({ alipayPayQr: '' });
+    this.onShow();
   },
 
   afterRead(e) {

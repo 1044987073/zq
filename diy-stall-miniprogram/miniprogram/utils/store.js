@@ -120,7 +120,10 @@ const DEFAULT_SETTINGS = {
   openHours: '16:00 – 20:00（周末及节假日）',
   isOpen: true,
   locationName: '公园儿童游乐区附近',
-  notice: '颜料为水洗丙烯；许愿瓶含小珠，3 岁以下请在家长陪同下体验。'
+  notice: '颜料为水洗丙烯；许愿瓶含小珠，3 岁以下请在家长陪同下体验。',
+  payHint: '现场扫码付款，付款后请告知摊主开始体验',
+  wechatPayQr: '',
+  alipayPayQr: ''
 };
 
 function readJson(key, fallback) {

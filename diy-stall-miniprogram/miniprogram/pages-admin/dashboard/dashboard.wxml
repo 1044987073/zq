@@ -15,6 +15,7 @@
     <van-field label="标语" value="{{settings.slogan}}" bind:change="onField" data-key="slogan" />
     <van-field label="营业时间" value="{{settings.openHours}}" bind:change="onField" data-key="openHours" />
     <van-field label="位置描述" value="{{settings.locationName}}" bind:change="onField" data-key="locationName" />
+    <van-field label="付款提示" value="{{settings.payHint}}" bind:change="onField" data-key="payHint" />
     <van-cell title="今日营业" center>
       <van-switch checked="{{settings.isOpen}}" bind:change="onOpenToggle" size="24px" />
     </van-cell>

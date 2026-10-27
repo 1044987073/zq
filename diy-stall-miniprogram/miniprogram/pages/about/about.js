@@ -5,10 +5,17 @@ Page({
   data: { pageStyle: '', settings: {} },
   onShow() {
     const theme = loadTheme();
+    const settings = store.getSettings();
     this.setData({
       pageStyle: themeToPageStyle(theme),
-      settings: store.getSettings()
+      settings,
+      hasPayQr: !!(settings.wechatPayQr || settings.alipayPayQr)
     });
+  },
+
+  preview(e) {
+    const url = e.currentTarget.dataset.url;
+    if (url) wx.previewImage({ urls: [url], current: url });
   },
   openMap() {
     const s = store.getSettings();
