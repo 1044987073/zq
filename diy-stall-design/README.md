@@ -1,6 +1,8 @@
 # 公园 DIY · TDesign 设计实现（Vue 3）
 
-与微信小程序业务一致的高保真 **可运行设计稿**：用户端（TDesign Mobile）+ 管理端（TDesign Vue Next）。
+> **流程说明**：正式流程应为 **先在即时设计定稿**（见 `../design/`），再按稿开发。本工程用于定稿前预览、导出 `design/screens` 参考图，或定稿后 UI 走查对照，**不是**替代即时设计源文件。
+
+与微信小程序业务一致的可运行原型：用户端（TDesign Mobile）+ 管理端（TDesign Vue Next）。
 
 ## 技术选型
 
