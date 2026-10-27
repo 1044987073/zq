@@ -55,13 +55,15 @@ Page({
       Toast.fail('请填写项目和实收单价');
       return;
     }
+    const qty = Number(f.qty) || 1;
     store.addLedgerEntry({
       productName: f.productName,
-      qty: Number(f.qty) || 1,
+      qty,
       price: Number(f.price),
       cost: Number(f.cost) || 0,
       note: f.note || ''
     });
+    store.adjustStockByProductName(f.productName, -qty);
     Toast.success('已记账');
     this.setData({ form: { productName: '', qty: 1, price: '', cost: '', note: '' }, pickerLabel: '点击选择' });
     this.onShow();

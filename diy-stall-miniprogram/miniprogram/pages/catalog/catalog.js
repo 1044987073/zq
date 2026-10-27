@@ -1,4 +1,5 @@
 const store = require('../../utils/store');
+const { decorateList } = require('../../utils/productDisplay');
 const { loadTheme, themeToPageStyle } = require('../../utils/theme');
 
 Page({
@@ -7,7 +8,7 @@ Page({
     const theme = loadTheme();
     this.setData({
       pageStyle: themeToPageStyle(theme),
-      products: store.getProducts()
+      products: decorateList(store.getProductsForUser())
     });
   },
   goDetail(e) {

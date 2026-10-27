@@ -30,4 +30,6 @@ npm install
 
 数据默认存本地 Storage；适合摆摊试跑。后续可迁云开发数据库做多端同步。
 
-现场收款：管理端上传微信/支付宝 **收款码**，用户端「关于」页展示（无需微信支付接口）。主体类型与升级路径见 [docs/SUBJECT-AND-PAY.md](docs/SUBJECT-AND-PAY.md)。
+- **商品**：管理端「商品管理」维护图片、定价、库存、玩法说明；用户端项目/详情同步展示。
+- **收款码（可选）**：同在商品管理页底部上传，用户端「关于」页展示；未上传则不显示。
+- 给别人用 / 收益机制见 [docs/DISTRIBUTION-AND-REVENUE.md](docs/DISTRIBUTION-AND-REVENUE.md)；主体类型见 [docs/SUBJECT-AND-PAY.md](docs/SUBJECT-AND-PAY.md)。

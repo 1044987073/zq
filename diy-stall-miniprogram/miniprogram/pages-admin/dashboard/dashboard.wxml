@@ -22,8 +22,7 @@
   </van-cell-group>
 
   <van-cell-group inset title="管理功能">
-    <van-cell title="项目与价格" is-link url="/pages-admin/products/products" />
-    <van-cell title="图片上传（轮播/封面）" is-link url="/pages-admin/upload/upload" />
+    <van-cell title="商品管理（图/价/库存/玩法）" is-link url="/pages-admin/products/products" />
     <van-cell title="记账" is-link url="/pages-admin/ledger/ledger" />
     <van-cell title="主题配色" is-link url="/pages-admin/theme/theme" />
   </van-cell-group>

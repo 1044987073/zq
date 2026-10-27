@@ -8,14 +8,14 @@
     </view>
   </view>
 
-  <view class="section-title section-title--first">主推体验</view>
-  <view class="card" bindtap="goDetail" data-id="pumpkin-s">
+  <view wx:if="{{featured}}" class="section-title section-title--first">主推体验</view>
+  <view wx:if="{{featured}}" class="card" bindtap="goDetail" data-id="{{featured.id}}">
     <view class="card__body product-row">
-      <image class="product-row__cover" src="/assets/products/pumpkin.png" mode="aspectFill" />
+      <image class="product-row__cover" src="{{featured.cover}}" mode="aspectFill" />
       <view>
-        <view class="product-row__name">砸南瓜石膏 · 现场涂色</view>
-        <view class="text-muted">围观引流招牌项目</view>
-        <view class="product-row__price">10 元起</view>
+        <view class="product-row__name">{{featured.name}}</view>
+        <view class="text-muted">{{featured.desc}}</view>
+        <view class="product-row__price">{{featured.priceLabel}}</view>
       </view>
     </view>
   </view>

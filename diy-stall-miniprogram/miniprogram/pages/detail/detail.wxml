@@ -3,6 +3,7 @@
   <view class="section-title">{{product.name}}</view>
   <view class="product-row__price">{{product.priceLabel}}</view>
   <view class="text-muted meta">{{product.duration}} · 适合 {{product.age}}</view>
+  <view wx:if="{{product.stockLabel}}" class="meta stock">{{product.stockLabel}}</view>
   <view class="section-title">玩法步骤</view>
   <view class="card">
     <view class="card__body">

@@ -14,6 +14,8 @@ const DEFAULT_PRODUCTS = [
     duration: '约 15 分钟',
     age: '4–10 岁',
     cover: '/assets/products/mask.png',
+    stock: 10,
+    enabled: true,
     steps: ['选空白面具', '丙烯自由涂色', '现场晾干带走'],
     desc: '可加羽毛贴纸提价，适合低龄小朋友。'
   },
@@ -27,6 +29,8 @@ const DEFAULT_PRODUCTS = [
     duration: '约 20 分钟',
     age: '5 岁+',
     cover: '/assets/products/pumpkin.png',
+    stock: 15,
+    enabled: true,
     steps: ['小锤敲开石膏壳', '取出南瓜娃娃', '涂色装饰带走'],
     desc: '「砸」的过程很解压，围观引流效果好。'
   },
@@ -40,6 +44,8 @@ const DEFAULT_PRODUCTS = [
     duration: '约 25 分钟',
     age: '5 岁+',
     cover: '/assets/products/pumpkin.png',
+    stock: 10,
+    enabled: true,
     steps: ['敲开大石膏', '取出娃娃', '精细涂色'],
     desc: '体验感更强，建议垫布防飞溅。'
   },
@@ -53,6 +59,8 @@ const DEFAULT_PRODUCTS = [
     duration: '约 10 分钟',
     age: '全年龄',
     cover: '/assets/products/fan.png',
+    stock: 20,
+    enabled: true,
     steps: ['选空白扇面', '现场绘画', '即取即用'],
     desc: '成本低、周转快，试营业可先用 8 元聚人气。'
   },
@@ -66,6 +74,8 @@ const DEFAULT_PRODUCTS = [
     duration: '约 10 分钟',
     age: '6 岁+',
     cover: '/assets/products/wish.png',
+    stock: 10,
+    enabled: true,
     steps: ['装泡大珠', '加纸条亮片', '拧盖带走'],
     desc: '小款便宜款；泡大珠 +2 元，灯串/纸条 +3 元。'
   },
@@ -79,6 +89,8 @@ const DEFAULT_PRODUCTS = [
     duration: '约 15 分钟',
     age: '6 岁+',
     cover: '/assets/products/wish.png',
+    stock: 10,
+    enabled: true,
     steps: ['大瓶更多装饰', '泡大珠变色', '许愿带走'],
     desc: '提醒 3 岁以下勿误吞小珠。'
   },
@@ -92,10 +104,20 @@ const DEFAULT_PRODUCTS = [
     duration: '10–20 分钟',
     age: '6 岁+',
     cover: '/assets/products/dig.png',
+    stock: 6,
+    enabled: true,
     steps: ['选挖掘块', '工具挖化石', '取出模型收藏'],
     desc: '高价体验项，人多时可引导先选面具/扇子。'
   }
 ];
+
+function normalizeProduct(p) {
+  const next = { ...p };
+  if (next.enabled === undefined) next.enabled = true;
+  if (next.stock === undefined) next.stock = null;
+  if (!Array.isArray(next.steps)) next.steps = [];
+  return next;
+}
 
 const DEFAULT_BUNDLES = [
   {
@@ -137,7 +159,25 @@ function readJson(key, fallback) {
 }
 
 function getProducts() {
-  return readJson(PRODUCTS_KEY, DEFAULT_PRODUCTS);
+  const raw = readJson(PRODUCTS_KEY, DEFAULT_PRODUCTS);
+  return (Array.isArray(raw) ? raw : DEFAULT_PRODUCTS).map(normalizeProduct);
+}
+
+/** 用户端：仅上架商品 */
+function getProductsForUser() {
+  return getProducts().filter((p) => p.enabled !== false);
+}
+
+function adjustStockByProductName(name, delta) {
+  if (!name || !delta) return;
+  const list = getProducts();
+  const idx = list.findIndex((p) => p.name === name);
+  if (idx < 0) return;
+  const p = list[idx];
+  if (p.stock == null || p.stock === '') return;
+  const nextStock = Math.max(0, Number(p.stock) + delta);
+  list[idx] = { ...p, stock: nextStock };
+  saveProducts(list);
 }
 
 function saveProducts(list) {
@@ -226,5 +266,8 @@ module.exports = {
   addLedgerEntry,
   ledgerSummaryByDate,
   formatDate,
-  resetCatalogToDefault
+  resetCatalogToDefault,
+  getProductsForUser,
+  adjustStockByProductName,
+  normalizeProduct
 };

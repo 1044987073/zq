@@ -8,6 +8,9 @@
 .meta {
   margin-top: 12rpx;
 }
+.stock {
+  color: var(--color-accent);
+}
 
 .step {
   display: flex;

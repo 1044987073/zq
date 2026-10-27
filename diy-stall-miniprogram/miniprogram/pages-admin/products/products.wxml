@@ -1,15 +1,65 @@
 <view class="page" style="{{pageStyle}}">
-  <view class="card" wx:for="{{products}}" wx:key="id">
+  <view class="section-title section-title--first">首页轮播（可选）</view>
+  <view class="text-muted hint">摊位实拍，展示在用户端首页。</view>
+  <van-uploader file-list="{{bannerList}}" bind:after-read="onBannerAdd" bind:delete="onBannerDelete" max-count="6" />
+
+  <view class="section-title">商品列表</view>
+  <view class="text-muted hint">点击商品图可更换；库存留空表示不显示数量。记账成功会自动扣减库存。</view>
+
+  <view class="card product-card" wx:for="{{products}}" wx:key="id">
     <view class="card__body">
       <view class="product-row">
-        <image class="product-row__cover" src="{{item.cover}}" mode="aspectFill" bindtap="changeCover" data-id="{{item.id}}" />
+        <view class="cover-wrap" bindtap="changeCover" data-id="{{item.id}}">
+          <image class="product-row__cover" src="{{item.cover}}" mode="aspectFill" />
+          <view class="cover-wrap__tip">换图</view>
+        </view>
         <view class="flex-1">
-          <van-field label="名称" value="{{item.name}}" data-id="{{item.id}}" data-field="name" bind:change="onProductField" />
-          <van-field label="售价" type="digit" value="{{item.price}}" data-id="{{item.id}}" data-field="price" bind:change="onProductField" />
-          <van-field label="展示价" value="{{item.priceLabel}}" data-id="{{item.id}}" data-field="priceLabel" bind:change="onProductField" />
+          <van-cell title="上架" center border="{{false}}">
+            <van-switch checked="{{item.enabled}}" data-id="{{item.id}}" bind:change="onEnabled" size="20px" />
+          </van-cell>
         </view>
       </view>
+      <van-field label="名称" value="{{item.name}}" data-id="{{item.id}}" data-field="name" bind:change="onProductField" />
+      <van-field label="售价" type="digit" value="{{item.price}}" data-id="{{item.id}}" data-field="price" bind:change="onProductField" />
+      <van-field label="展示价" value="{{item.priceLabel}}" data-id="{{item.id}}" data-field="priceLabel" bind:change="onProductField" />
+      <van-field label="成本" type="digit" value="{{item.cost}}" data-id="{{item.id}}" data-field="cost" bind:change="onProductField" />
+      <van-field label="库存" type="number" value="{{item.stock}}" placeholder="留空=不显示库存" data-id="{{item.id}}" data-field="stock" bind:change="onProductField" />
+      <van-field label="标签" value="{{item.tag}}" placeholder="如：招牌、热门" data-id="{{item.id}}" data-field="tag" bind:change="onProductField" />
+      <van-field label="时长" value="{{item.duration}}" data-id="{{item.id}}" data-field="duration" bind:change="onProductField" />
+      <van-field label="适龄" value="{{item.age}}" data-id="{{item.id}}" data-field="age" bind:change="onProductField" />
+      <van-field
+        label="玩法说明"
+        type="textarea"
+        autosize
+        value="{{item.desc}}"
+        data-id="{{item.id}}"
+        data-field="desc"
+        bind:change="onProductField"
+      />
+      <van-field
+        label="步骤"
+        type="textarea"
+        autosize
+        value="{{item.stepsText}}"
+        placeholder="每行一步"
+        data-id="{{item.id}}"
+        data-field="stepsText"
+        bind:change="onStepsField"
+      />
     </view>
   </view>
+
+  <van-button block round type="primary" bind:click="addProduct">新增商品</van-button>
   <van-button block round plain bind:click="resetDefault">恢复默认价目</van-button>
+
+  <view class="section-title">收款码（可选）</view>
+  <view class="text-muted hint">不上传则不展示；用户端在「关于」页显示。</view>
+  <view class="pay-block">
+    <view class="pay-label">微信收款码</view>
+    <van-uploader file-list="{{wechatList}}" max-count="1" bind:after-read="onWechatQr" bind:delete="clearWechat" />
+  </view>
+  <view class="pay-block">
+    <view class="pay-label">支付宝收款码</view>
+    <van-uploader file-list="{{alipayList}}" max-count="1" bind:after-read="onAlipayQr" bind:delete="clearAlipay" />
+  </view>
 </view>
