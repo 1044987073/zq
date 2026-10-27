@@ -1,0 +1,35 @@
+<view class="page page--tab" style="{{pageStyle}}">
+  <view class="card">
+    <view class="card__body">
+      <view class="about-row"><text class="label">摊位</text>{{settings.stallName}}</view>
+      <view class="about-row"><text class="label">时间</text>{{settings.openHours}}</view>
+      <view class="about-row"><text class="label">位置</text>{{settings.locationName}}</view>
+    </view>
+  </view>
+  <view class="section-title">安全与提示</view>
+  <view class="card">
+    <view class="card__body text-muted">{{settings.notice}}</view>
+  </view>
+  <view class="section-title">现场付款</view>
+  <view class="text-muted pay-hint">{{settings.payHint}}</view>
+  <view wx:if="{{hasPayQr}}" class="pay-qr-grid">
+    <view wx:if="{{settings.wechatPayQr}}" class="pay-qr card">
+      <view class="card__body">
+        <view class="pay-qr__title">微信支付</view>
+        <image class="pay-qr__img" src="{{settings.wechatPayQr}}" mode="aspectFit" show-menu-by-longpress="{{true}}" bindtap="preview" data-url="{{settings.wechatPayQr}}" />
+        <view class="text-muted">长按识别或保存二维码</view>
+      </view>
+    </view>
+    <view wx:if="{{settings.alipayPayQr}}" class="pay-qr card">
+      <view class="card__body">
+        <view class="pay-qr__title">支付宝</view>
+        <image class="pay-qr__img" src="{{settings.alipayPayQr}}" mode="aspectFit" show-menu-by-longpress="{{true}}" bindtap="preview" data-url="{{settings.alipayPayQr}}" />
+        <view class="text-muted">长按识别或保存二维码</view>
+      </view>
+    </view>
+  </view>
+  <van-empty wx:if="{{!hasPayQr}}" description="摊主尚未上传收款码" />
+
+  <view class="section-title">找到我们</view>
+  <van-button type="primary" block round bind:click="openMap">打开地图导航（需配置坐标）</van-button>
+</view>

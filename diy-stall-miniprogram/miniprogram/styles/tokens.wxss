@@ -1,0 +1,17 @@
+/**
+ * 主题令牌 — 运行时由 utils/theme.js 通过 pageStyle 覆盖
+ * 管理后台「主题配色」页可修改并即时生效
+ */
+page {
+  --color-primary: #2d6a4f;
+  --color-primary-light: #52b788;
+  --color-secondary: #d8f3dc;
+  --color-accent: #f4a261;
+  --color-bg: #f7f9f8;
+  --color-surface: #ffffff;
+  --color-text: #1b4332;
+  --color-text-muted: #52796f;
+  --color-danger: #e76f51;
+  --radius-md: 16rpx;
+  --shadow-card: 0 8rpx 32rpx rgba(45, 106, 79, 0.08);
+}

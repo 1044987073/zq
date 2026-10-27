@@ -1,0 +1,36 @@
+<view class="page" style="{{pageStyle}}">
+  <view class="text-muted hint">修改后即时生效于用户端与管理端。基于 CSS 变量，兼容 Vant / TDesign 品牌色。</view>
+
+  <view class="presets">
+    <view
+      class="preset"
+      wx:for="{{presets}}"
+      wx:key="name"
+      style="background: {{item.primary}}"
+      data-index="{{index}}"
+      bindtap="applyPreset"
+    >
+      <text>{{item.name}}</text>
+    </view>
+  </view>
+
+  <van-cell-group inset>
+    <van-field label="主色" value="{{theme.primary}}" data-key="primary" bind:change="onThemeField" />
+    <van-field label="主色浅" value="{{theme.primaryLight}}" data-key="primaryLight" bind:change="onThemeField" />
+    <van-field label="辅色底" value="{{theme.secondary}}" data-key="secondary" bind:change="onThemeField" />
+    <van-field label="强调色" value="{{theme.accent}}" data-key="accent" bind:change="onThemeField" />
+    <van-field label="背景" value="{{theme.background}}" data-key="background" bind:change="onThemeField" />
+    <van-field label="正文色" value="{{theme.text}}" data-key="text" bind:change="onThemeField" />
+  </van-cell-group>
+
+  <view class="preview card">
+    <view class="card__body">
+      <view class="preview__bar">按钮预览</view>
+      <van-button type="primary" round>主按钮</van-button>
+      <view class="preview__chip" style="background: {{theme.secondary}}; color: {{theme.primary}}">标签样式</view>
+    </view>
+  </view>
+
+  <van-button block round type="primary" bind:click="save">保存主题</van-button>
+</view>
+<van-toast id="van-toast" />

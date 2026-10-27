@@ -1,0 +1,16 @@
+<view class="page page--tab" style="{{pageStyle}}">
+  <view class="card" wx:for="{{products}}" wx:key="id" bindtap="goDetail" data-id="{{item.id}}">
+    <view class="card__body product-row">
+      <image class="product-row__cover" src="{{item.cover}}" mode="aspectFill" />
+      <view>
+        <view class="product-row__name">
+          {{item.name}}
+          <text wx:if="{{item.soldOut}}" class="pill pill--muted">售罄</text>
+        </view>
+        <view class="text-muted">{{item.desc}}</view>
+        <view class="product-row__price">{{item.priceLabel}}</view>
+        <view wx:if="{{item.stockLabel}}" class="text-muted stock">{{item.stockLabel}}</view>
+      </view>
+    </view>
+  </view>
+</view>

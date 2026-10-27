@@ -1,0 +1,71 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/catalog/catalog",
+    "pages/detail/detail",
+    "pages/bundles/bundles",
+    "pages/about/about",
+    "pages-admin/login/login",
+    "pages-admin/dashboard/dashboard",
+    "pages-admin/products/products",
+    "pages-admin/ledger/ledger",
+    "pages-admin/upload/upload",
+    "pages-admin/theme/theme"
+  ],
+  "window": {
+    "navigationBarTitleText": "公园 DIY",
+    "navigationBarBackgroundColor": "#2D6A4F",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#F7F9F8",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#52796F",
+    "selectedColor": "#2D6A4F",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "assets/tab/home.png",
+        "selectedIconPath": "assets/tab/home-active.png"
+      },
+      {
+        "pagePath": "pages/catalog/catalog",
+        "text": "项目",
+        "iconPath": "assets/tab/grid.png",
+        "selectedIconPath": "assets/tab/grid-active.png"
+      },
+      {
+        "pagePath": "pages/bundles/bundles",
+        "text": "套餐",
+        "iconPath": "assets/tab/gift.png",
+        "selectedIconPath": "assets/tab/gift-active.png"
+      },
+      {
+        "pagePath": "pages/about/about",
+        "text": "关于",
+        "iconPath": "assets/tab/info.png",
+        "selectedIconPath": "assets/tab/info-active.png"
+      }
+    ]
+  },
+  "usingComponents": {
+    "van-button": "@vant/weapp/button/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-tag": "@vant/weapp/tag/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-uploader": "@vant/weapp/uploader/index",
+    "van-dialog": "@vant/weapp/dialog/index",
+    "van-toast": "@vant/weapp/toast/index",
+    "van-empty": "@vant/weapp/empty/index",
+    "van-swipe": "@vant/weapp/swipe/index",
+    "van-swipe-item": "@vant/weapp/swipe-item/index",
+    "van-switch": "@vant/weapp/switch/index"
+  },
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

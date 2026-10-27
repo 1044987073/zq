@@ -1,0 +1,48 @@
+<view class="page page--tab" style="{{pageStyle}}">
+  <view class="hero">
+    <view class="hero__title">{{settings.stallName}}</view>
+    <view class="hero__sub">{{settings.slogan}}</view>
+    <view class="hero__status">
+      <text class="status-dot {{settings.isOpen ? 'status-dot--open' : 'status-dot--closed'}}"></text>
+      {{settings.isOpen ? '今日营业中' : '今日休息'}} · {{settings.openHours}}
+    </view>
+  </view>
+
+  <view wx:if="{{featured}}" class="section-title section-title--first">主推体验</view>
+  <view wx:if="{{featured}}" class="card" bindtap="goDetail" data-id="{{featured.id}}">
+    <view class="card__body product-row">
+      <image class="product-row__cover" src="{{featured.cover}}" mode="aspectFill" />
+      <view>
+        <view class="product-row__name">{{featured.name}}</view>
+        <view class="text-muted">{{featured.desc}}</view>
+        <view class="product-row__price">{{featured.priceLabel}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{banners.length}}" class="section-title">摊位实拍</view>
+  <van-swipe wx:if="{{banners.length}}" autoplay="4000" indicator-dots height="320">
+    <van-swipe-item wx:for="{{banners}}" wx:key="url">
+      <image class="banner-img" src="{{item.url}}" mode="aspectFill" />
+    </van-swipe-item>
+  </van-swipe>
+
+  <view class="section-title">全部项目</view>
+  <view class="card" wx:for="{{products}}" wx:key="id" bindtap="goDetail" data-id="{{item.id}}">
+    <view class="card__body product-row">
+      <image class="product-row__cover" src="{{item.cover}}" mode="aspectFill" />
+      <view class="flex-1">
+        <view class="product-row__name">
+          {{item.name}}
+          <text wx:if="{{item.tag}}" class="pill">{{item.tag}}</text>
+        </view>
+        <view class="text-muted">{{item.duration}} · {{item.age}}</view>
+        <view class="product-row__price">{{item.priceLabel}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="admin-entry" bindtap="tapAdmin">
+    <text>摊主管理入口</text>
+  </view>
+</view>

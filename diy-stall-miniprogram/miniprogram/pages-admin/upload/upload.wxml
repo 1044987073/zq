@@ -1,0 +1,16 @@
+<view class="page" style="{{pageStyle}}">
+  <view class="section-title section-title--first">首页轮播图</view>
+  <view class="text-muted hint">上传摊位实拍，用户端首页展示。图片保存在本地；开通云开发后可扩展为云存储。</view>
+  <van-uploader file-list="{{fileList}}" bind:after-read="afterRead" bind:delete="onDelete" max-count="6" />
+
+  <view class="section-title">收款码（现场扫码）</view>
+  <view class="text-muted hint">上传微信/支付宝个人或商家收款码截图，用户端「关于」页展示。无需开通小程序微信支付接口。</view>
+  <view class="pay-block">
+    <view class="pay-label">微信收款码</view>
+    <van-uploader file-list="{{wechatList}}" max-count="1" bind:after-read="onWechatQr" bind:delete="clearWechat" />
+  </view>
+  <view class="pay-block">
+    <view class="pay-label">支付宝收款码</view>
+    <van-uploader file-list="{{alipayList}}" max-count="1" bind:after-read="onAlipayQr" bind:delete="clearAlipay" />
+  </view>
+</view>

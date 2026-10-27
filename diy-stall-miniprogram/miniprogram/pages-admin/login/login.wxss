@@ -1,0 +1,17 @@
+.login__brand {
+  margin: 48rpx 0 40rpx;
+  text-align: center;
+}
+.login__title {
+  font-size: 40rpx;
+  font-weight: 700;
+  margin-bottom: 12rpx;
+}
+.login__actions {
+  margin: 48rpx 24rpx 0;
+}
+.openid {
+  margin: 32rpx 24rpx 16rpx;
+  font-size: 22rpx;
+  word-break: break-all;
+}

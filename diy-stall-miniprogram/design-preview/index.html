@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>公园 DIY 小程序 · UI 设计稿</title>
+  <link rel="stylesheet" href="./viewer.css" />
+</head>
+<body>
+  <div class="dh-app" id="app">
+    <header class="dh-topbar">
+      <div class="dh-topbar__left">
+        <span class="dh-logo">UI</span>
+        <span class="dh-project">公园 DIY 摆摊小程序</span>
+        <span class="dh-badge">设计稿 v1</span>
+      </div>
+      <div class="dh-topbar__center">
+        <button type="button" class="dh-icon-btn" id="zoomOut" title="缩小">−</button>
+        <span class="dh-zoom-label" id="zoomLabel">100%</span>
+        <button type="button" class="dh-icon-btn" id="zoomIn" title="放大">+</button>
+        <button type="button" class="dh-text-btn" id="zoomFit">适应画布</button>
+      </div>
+      <div class="dh-topbar__right">
+        <span class="dh-hint">类似蓝湖 / Figma 网页预览 · 本地/在线均可打开</span>
+      </div>
+    </header>
+
+    <div class="dh-body">
+      <aside class="dh-pages">
+        <div class="dh-pages__title">画板</div>
+        <ul class="dh-page-list" id="pageList"></ul>
+      </aside>
+
+      <main class="dh-canvas-wrap" id="canvasWrap">
+        <div class="dh-canvas" id="canvas">
+          <div class="dh-boards" id="boards"></div>
+        </div>
+      </main>
+
+      <aside class="dh-inspect">
+        <div class="dh-inspect__title">标注</div>
+        <div class="dh-inspect__section">
+          <div class="dh-label">当前画板</div>
+          <div class="dh-value" id="inspectName">—</div>
+        </div>
+        <div class="dh-inspect__section">
+          <div class="dh-label">画板尺寸</div>
+          <div class="dh-value">375 × 812（iPhone 逻辑像素）</div>
+        </div>
+        <div class="dh-inspect__section">
+          <div class="dh-label">主题色 · 可改</div>
+          <div class="dh-tokens" id="tokenEditors"></div>
+        </div>
+        <div class="dh-inspect__section">
+          <div class="dh-label">说明</div>
+          <p class="dh-desc" id="inspectDesc"></p>
+        </div>
+        <div class="dh-inspect__section">
+          <div class="dh-label">导入 Figma / 蓝湖</div>
+          <p class="dh-desc small">
+            在 Figma 中可「从图片导入」本页截图，或按右侧色值建 Design Token。蓝湖需先在 Figma/Sketch 完稿后上传。真机以微信开发者工具为准。
+          </p>
+        </div>
+      </aside>
+    </div>
+  </div>
+  <script src="./boards.js"></script>
+  <script src="./viewer.js"></script>
+</body>
+</html>

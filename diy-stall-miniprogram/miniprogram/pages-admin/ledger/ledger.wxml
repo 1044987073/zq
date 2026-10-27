@@ -1,0 +1,26 @@
+<view class="page" style="{{pageStyle}}">
+  <van-cell-group inset title="记一笔">
+    <van-field label="项目" value="{{form.productName}}" placeholder="选择或输入" bind:change="onForm" data-key="productName" />
+    <picker mode="selector" range="{{productNames}}" bindchange="pickProduct">
+      <van-cell title="从列表选择" is-link value="{{pickerLabel}}" />
+    </picker>
+    <van-field label="数量" type="number" value="{{form.qty}}" bind:change="onForm" data-key="qty" />
+    <van-field label="实收单价" type="digit" value="{{form.price}}" bind:change="onForm" data-key="price" />
+    <van-field label="成本单价" type="digit" value="{{form.cost}}" bind:change="onForm" data-key="cost" />
+    <van-field label="备注" value="{{form.note}}" bind:change="onForm" data-key="note" />
+  </van-cell-group>
+  <view class="actions">
+    <van-button type="primary" block round bind:click="submit">保存</van-button>
+  </view>
+
+  <view class="section-title">今日记录</view>
+  <van-empty wx:if="{{!rows.length}}" description="暂无记录" />
+  <view class="card" wx:for="{{rows}}" wx:key="id">
+    <view class="card__body row-item">
+      <view>{{item.productName}} × {{item.qty}}</view>
+      <view class="accent">¥{{item.amount}}</view>
+      <view class="text-muted">{{item.time}}</view>
+    </view>
+  </view>
+</view>
+<van-toast id="van-toast" />

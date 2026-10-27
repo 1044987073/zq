@@ -1,0 +1,18 @@
+.hint { margin-bottom: 20rpx; padding: 0 4rpx; }
+.product-card + .product-card { margin-top: 24rpx; }
+.flex-1 { flex: 1; }
+.cover-wrap { position: relative; flex-shrink: 0; }
+.cover-wrap__tip {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 20rpx;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.45);
+  padding: 4rpx 0;
+  border-radius: 0 0 20rpx 20rpx;
+}
+.pay-block { margin-bottom: 28rpx; }
+.pay-label { font-weight: 600; margin-bottom: 12rpx; }

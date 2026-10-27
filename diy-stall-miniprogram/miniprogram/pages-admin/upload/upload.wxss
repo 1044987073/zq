@@ -1,0 +1,3 @@
+.hint { margin-bottom: 24rpx; padding: 0 8rpx; }
+.pay-block { margin-bottom: 32rpx; }
+.pay-label { font-weight: 600; margin-bottom: 12rpx; }

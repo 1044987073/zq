@@ -1,0 +1,20 @@
+<view class="page" style="{{pageStyle}}" wx:if="{{product}}">
+  <image class="cover" src="{{product.cover}}" mode="aspectFill" />
+  <view class="section-title">{{product.name}}</view>
+  <view class="product-row__price">{{product.priceLabel}}</view>
+  <view class="text-muted meta">{{product.duration}} · 适合 {{product.age}}</view>
+  <view wx:if="{{product.stockLabel}}" class="meta stock">{{product.stockLabel}}</view>
+  <view class="section-title">玩法步骤</view>
+  <view class="card">
+    <view class="card__body">
+      <view class="step" wx:for="{{product.steps}}" wx:key="*this">
+        <text class="step__idx">{{index + 1}}</text>
+        <text>{{item}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="section-title">说明</view>
+  <view class="card">
+    <view class="card__body text-muted">{{product.desc}}</view>
+  </view>
+</view>

@@ -1,0 +1,21 @@
+<view class="page page--tab" style="{{pageStyle}}">
+  <view class="card combo" wx:for="{{bundles}}" wx:key="id">
+    <view class="card__body">
+      <view class="combo__head">
+        <text class="combo__name">{{item.name}}</text>
+        <text class="combo__price">¥{{item.price}}</text>
+      </view>
+      <view class="text-muted">{{item.saveHint}}</view>
+      <view class="combo__items">
+        <van-tag wx:for="{{item.items}}" wx:key="*this" plain type="primary" custom-class="tag">{{item}}</van-tag>
+      </view>
+    </view>
+  </view>
+  <view class="section-title">许愿瓶加项</view>
+  <view class="card">
+    <view class="card__body text-muted">
+      <view>泡大珠 +2 元</view>
+      <view>发光灯串 / 许愿纸条 +3 元</view>
+    </view>
+  </view>
+</view>
