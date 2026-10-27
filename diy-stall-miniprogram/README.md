@@ -4,7 +4,9 @@
 
 详细 UI 规范见 [docs/UI-DESIGN.md](docs/UI-DESIGN.md)。
 
-**UI 设计稿（蓝湖/Figma 式网页）**：本地打开 [`design-preview/index.html`](design-preview/index.html)（左画板 + 画布缩放 + 右标注）。说明与 Pages 部署见 [design-preview/README.md](design-preview/README.md)。原生 Figma/蓝湖需在你账号中建稿或从本页截图导入。
+**UI 设计稿**：
+- 即时设计 + Vue3 可运行稿：[`../diy-stall-design/`](../diy-stall-design/)（TDesign，见 [JSDESIGN.md](../diy-stall-design/docs/JSDESIGN.md)）
+- 静态画板预览：[`design-preview/index.html`](design-preview/index.html)
 
 ## 快速开始
 

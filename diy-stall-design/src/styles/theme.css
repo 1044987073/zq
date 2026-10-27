@@ -1,0 +1,30 @@
+:root {
+  --diy-primary: #2d6a4f;
+  --diy-primary-light: #52b788;
+  --diy-secondary: #d8f3dc;
+  --diy-accent: #f4a261;
+  --diy-bg: #f7f9f8;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: #eef1ef;
+  font-family: 'PingFang SC', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* TDesign 品牌色与摆摊主题对齐 */
+.tdesign-demo__user {
+  --td-brand-color: var(--diy-primary);
+  --td-brand-color-light: var(--diy-primary-light);
+  --td-brand-color-focus: var(--diy-secondary);
+}
+
+.tdesign-demo__admin {
+  --td-brand-color: var(--diy-primary);
+}
