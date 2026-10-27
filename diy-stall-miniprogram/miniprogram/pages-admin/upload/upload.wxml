@@ -1,0 +1,5 @@
+<view class="page" style="{{pageStyle}}">
+  <view class="section-title section-title--first">首页轮播图</view>
+  <view class="text-muted hint">上传摊位实拍，用户端首页展示。图片保存在本地；开通云开发后可扩展为云存储。</view>
+  <van-uploader file-list="{{fileList}}" bind:after-read="afterRead" bind:delete="onDelete" max-count="6" />
+</view>

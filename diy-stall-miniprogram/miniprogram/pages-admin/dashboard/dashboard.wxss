@@ -1,0 +1,9 @@
+.stats__title { font-size: 28rpx; color: var(--color-text-muted); }
+.stats__row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20rpx;
+}
+.num { font-size: 36rpx; font-weight: 700; }
+.accent { color: var(--color-accent); }
+.logout { margin: 48rpx 16rpx; }

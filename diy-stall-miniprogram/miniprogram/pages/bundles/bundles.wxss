@@ -1,0 +1,11 @@
+.combo + .combo { margin-top: 20rpx; }
+.combo__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 8rpx;
+}
+.combo__name { font-size: 32rpx; font-weight: 600; }
+.combo__price { font-size: 36rpx; color: var(--color-accent); font-weight: 700; }
+.combo__items { margin-top: 20rpx; display: flex; flex-wrap: wrap; gap: 12rpx; }
+.tag { margin-right: 8rpx; }

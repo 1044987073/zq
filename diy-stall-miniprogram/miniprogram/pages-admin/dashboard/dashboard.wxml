@@ -1,0 +1,33 @@
+<view class="page" style="{{pageStyle}}">
+  <view class="card stats">
+    <view class="card__body">
+      <view class="stats__title">今日记账</view>
+      <view class="stats__row">
+        <view><text class="num">{{summary.count}}</text><text class="text-muted"> 笔</text></view>
+        <view><text class="num accent">¥{{summary.revenue}}</text><text class="text-muted"> 营业额</text></view>
+        <view><text class="num">¥{{summary.profit}}</text><text class="text-muted"> 毛利估</text></view>
+      </view>
+    </view>
+  </view>
+
+  <van-cell-group inset title="经营设置">
+    <van-field label="摊位名" value="{{settings.stallName}}" bind:change="onField" data-key="stallName" />
+    <van-field label="标语" value="{{settings.slogan}}" bind:change="onField" data-key="slogan" />
+    <van-field label="营业时间" value="{{settings.openHours}}" bind:change="onField" data-key="openHours" />
+    <van-field label="位置描述" value="{{settings.locationName}}" bind:change="onField" data-key="locationName" />
+    <van-cell title="今日营业" center>
+      <van-switch checked="{{settings.isOpen}}" bind:change="onOpenToggle" size="24px" />
+    </van-cell>
+  </van-cell-group>
+
+  <van-cell-group inset title="管理功能">
+    <van-cell title="项目与价格" is-link url="/pages-admin/products/products" />
+    <van-cell title="图片上传（轮播/封面）" is-link url="/pages-admin/upload/upload" />
+    <van-cell title="记账" is-link url="/pages-admin/ledger/ledger" />
+    <van-cell title="主题配色" is-link url="/pages-admin/theme/theme" />
+  </van-cell-group>
+
+  <view class="logout">
+    <van-button block round plain type="danger" bind:click="logout">退出登录</van-button>
+  </view>
+</view>

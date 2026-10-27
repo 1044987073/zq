@@ -1,0 +1,15 @@
+<view class="page" style="{{pageStyle}}">
+  <view class="card" wx:for="{{products}}" wx:key="id">
+    <view class="card__body">
+      <view class="product-row">
+        <image class="product-row__cover" src="{{item.cover}}" mode="aspectFill" bindtap="changeCover" data-id="{{item.id}}" />
+        <view class="flex-1">
+          <van-field label="名称" value="{{item.name}}" data-id="{{item.id}}" data-field="name" bind:change="onProductField" />
+          <van-field label="售价" type="digit" value="{{item.price}}" data-id="{{item.id}}" data-field="price" bind:change="onProductField" />
+          <van-field label="展示价" value="{{item.priceLabel}}" data-id="{{item.id}}" data-field="priceLabel" bind:change="onProductField" />
+        </view>
+      </view>
+    </view>
+  </view>
+  <van-button block round plain bind:click="resetDefault">恢复默认价目</van-button>
+</view>

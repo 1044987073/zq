@@ -1,0 +1,2 @@
+.about-row { margin-bottom: 16rpx; }
+.label { color: var(--color-text-muted); margin-right: 16rpx; }

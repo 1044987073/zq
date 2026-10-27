@@ -1,0 +1,12 @@
+{
+  "name": "diy-stall-miniprogram",
+  "version": "1.0.0",
+  "description": "公园手工 DIY 摊位 — 用户展示端 + 管理后台",
+  "scripts": {
+    "postinstall": "echo '请在微信开发者工具中：工具 → 构建 npm'"
+  },
+  "dependencies": {
+    "@vant/weapp": "^1.11.7",
+    "tdesign-miniprogram": "^1.8.0"
+  }
+}

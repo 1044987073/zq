@@ -1,0 +1,22 @@
+<view class="page login" style="{{pageStyle}}">
+  <view class="login__brand">
+    <view class="login__title">摊主管理后台</view>
+    <view class="text-muted">仅管理员可进入 · 口令 + 可选 OpenID 白名单</view>
+  </view>
+  <van-cell-group inset>
+    <van-field
+      value="{{passphrase}}"
+      type="password"
+      label="口令"
+      placeholder="请输入管理口令"
+      border="{{false}}"
+      bind:change="onPassChange"
+    />
+  </van-cell-group>
+  <view class="login__actions">
+    <van-button type="primary" block round loading="{{loading}}" bind:click="onSubmit">登录</van-button>
+  </view>
+  <view wx:if="{{openid}}" class="openid text-muted">当前 OpenID（可复制到白名单）：{{openid}}</view>
+  <van-button plain hairline size="small" bind:click="loadOpenId">获取我的 OpenID</van-button>
+</view>
+<van-toast id="van-toast" />

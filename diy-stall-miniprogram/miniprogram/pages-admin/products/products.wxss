@@ -1,0 +1,2 @@
+.card + .card { margin-top: 20rpx; }
+.flex-1 { flex: 1; }
